@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI testInputText; // to print out input for testing
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
+    private bool keyPressed = false; 
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        keyPressed = false; //reset this bool for this update.
         testInputText.text = "nothing is pressed";
         UseLeftArm();
         UseRightArm();
@@ -39,41 +41,105 @@ public class PlayerController : MonoBehaviour
         UseBreathe();
     }
 
+    /// <summary>
+    /// Left arm swimming action
+    /// </summary>
     public void UseLeftArm()
     {
         if (_playerActions.LeftArm.IsPressed())
         {
             testInputText.text = "Use Left Arm";
+            keyPressedTrue();
         }
     }
+    /// <summary>
+    /// Right arm swimming action
+    /// </summary>
     public void UseRightArm()
     {
         if (_playerActions.RightArm.IsPressed())
         {
-            testInputText.text = "Use Right Arm";
+            string newLine = "";
+            if (keyPressed)
+            {
+                newLine = "\n ";
+                testInputText.text += newLine + "Use Right Arm";
+            }
+            else
+            {
+                testInputText.text = "Use Right Arm";
+            }
+            
+            keyPressedTrue();
         }
     }
 
+    /// <summary>
+    /// Left leg swimming action
+    /// </summary>
     public void UseLeftLeg()
     {
         if (_playerActions.LeftLeg.IsPressed())
         {
-            testInputText.text = "Use Left Leg";
+            string newLine = "";
+            if (keyPressed)
+            {
+                newLine = "\n ";
+                testInputText.text += newLine + "Use Left Leg";
+            }
+            else
+            {
+                testInputText.text ="Use Left Leg";
+            }
+            keyPressedTrue();
         }
     }
+    
+    /// <summary>
+    /// Right leg swimming action
+    /// </summary>
     public void UseRightLeg()
     {
         if (_playerActions.RightLeg.IsPressed())
         {
-            testInputText.text = "Use Right Leg";
+            string newLine = "";
+            if (keyPressed)
+            {
+                newLine = "\n ";
+                testInputText.text += newLine + "Use Right Leg";
+            }
+            else
+            {
+                testInputText.text ="Use Right Leg";
+            }
+            keyPressedTrue();
         }
     }
     
+    // need to hold to breathe air or drown.
     public void UseBreathe()
     {
         if (_playerActions.Breathe.IsPressed())
         {
-            testInputText.text = "Breathe";
+            string newLine = "";
+            if (keyPressed)
+            {
+                newLine = "\n ";
+                testInputText.text +=newLine + "Breathe";
+            }
+            else
+            {
+                testInputText.text = "Breathe";
+            }
+            
+            keyPressedTrue();
         }
     }
+
+    private void keyPressedTrue()
+    {
+        keyPressed = true;
+    }
+    
+    
 }
