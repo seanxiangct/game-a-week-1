@@ -607,7 +607,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3e2fc632-9fe0-4aeb-8bd6-91883298ccf2"",
-                    ""path"": ""<Keyboard>/#(W)"",
+                    ""path"": ""<Keyboard>/#(F)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -618,7 +618,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""28bac18c-98f2-48df-8c08-3a7ec915ab92"",
-                    ""path"": ""<Keyboard>/#(D)"",
+                    ""path"": ""<Keyboard>/#(J)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -629,7 +629,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2179258a-837a-4584-8dad-3ee149978912"",
-                    ""path"": ""<Keyboard>/#(A)"",
+                    ""path"": ""<Keyboard>/#(Z)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -640,7 +640,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""59a2c2e7-e876-416d-8153-988cf4f72d79"",
-                    ""path"": ""<Keyboard>/#(B)"",
+                    ""path"": ""<Keyboard>/#(/)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -651,7 +651,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""005906c4-3419-4331-820e-72892f4a51d9"",
-                    ""path"": ""<Keyboard>/#(S)"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
