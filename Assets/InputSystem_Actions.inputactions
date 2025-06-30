@@ -87,36 +87,52 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwimRightArm",
+
+                    "name": "Left Arm",
                     "type": "Button",
-                    "id": "48f05977-4ae7-41bc-a0ec-44b3041776f5",
+                    "id": "f968ad44-7ae4-44c6-967b-6323473377cb",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwimLeftArm",
+
+                    "name": "Right Arm",
                     "type": "Button",
-                    "id": "bfd7fbc6-a3c4-4611-be50-86250973bf29",
+                    "id": "ac8f134e-69ae-4dc7-a1de-832e3f9bebf9",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwimLeftLeg",
+
+                    "name": "Left Leg",
                     "type": "Button",
-                    "id": "c2082fd6-c3da-4544-b6ff-bae71878d9a6",
+                    "id": "b9509b70-7694-4322-8663-94d092a550a1",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwimRightLeg",
+
+                    "name": "Right Leg",
                     "type": "Button",
-                    "id": "e676b875-3e4d-41cf-91cb-c6b773df6e35",
+                    "id": "f85a6230-b2b0-4ba6-8e05-93b38920d9b0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Breathe",
+                    "type": "Button",
+                    "id": "fbdc2355-8f22-454b-9bdd-bab4d18b630a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -511,45 +527,59 @@
                 },
                 {
                     "name": "",
-                    "id": "83829832-309c-47e0-85f9-a50eca532776",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "SwimRightArm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "20f88ce3-cfb4-4bbd-b486-78ff0a9764a9",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "SwimLeftArm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "53a505df-19ef-46cf-9268-022d28e7f57c",
-                    "path": "",
+
+                    "id": "3e2fc632-9fe0-4aeb-8bd6-91883298ccf2",
+                    "path": "<Keyboard>/#(F)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwimLeftLeg",
+                    "action": "Left Arm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "40093145-b6e2-4b0d-b287-908805ad7981",
-                    "path": "",
+                    "id": "28bac18c-98f2-48df-8c08-3a7ec915ab92",
+                    "path": "<Keyboard>/#(J)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwimRightLeg",
+                    "action": "Right Arm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+
+                    "id": "2179258a-837a-4584-8dad-3ee149978912",
+                    "path": "<Keyboard>/#(Z)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Leg",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+
+                    "id": "59a2c2e7-e876-416d-8153-988cf4f72d79",
+                    "path": "<Keyboard>/#(/)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Leg",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "005906c4-3419-4331-820e-72892f4a51d9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Breathe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
