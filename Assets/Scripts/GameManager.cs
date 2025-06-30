@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,16 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public static event Action OnEndGame;
+    public static event Action OnEndStart;
+
+    [SerializeField] private float _initialStamina = 100.00f;
+    [SerializeField] private float _initialOxygenLevel = 100.00f;
+
+    public float InitialStamina =>_initialStamina;
+    public float InitialOxygenLevel => _initialOxygenLevel;
+    
+    
     private void Awake()
     {
         if (_instance != null)
@@ -28,6 +39,16 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
     }
 
     //resets the fields to starting params
@@ -47,9 +68,10 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Ends the game
     /// </summary>
-    public void EndGame()
+    public static void EndGame()
     {
-        
+        OnEndGame?.Invoke();
+        Time.timeScale = 0;
     }
 
     /// <summary>
