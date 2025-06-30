@@ -87,33 +87,40 @@
                     "initialStateCheck": false
                 },
                 {
+
                     "name": "Left Arm",
                     "type": "Button",
                     "id": "f968ad44-7ae4-44c6-967b-6323473377cb",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
+
                     "name": "Right Arm",
                     "type": "Button",
                     "id": "ac8f134e-69ae-4dc7-a1de-832e3f9bebf9",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
+
                     "name": "Left Leg",
                     "type": "Button",
                     "id": "b9509b70-7694-4322-8663-94d092a550a1",
+
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
+
                     "name": "Right Leg",
                     "type": "Button",
                     "id": "f85a6230-b2b0-4ba6-8e05-93b38920d9b0",
@@ -520,6 +527,7 @@
                 },
                 {
                     "name": "",
+
                     "id": "3e2fc632-9fe0-4aeb-8bd6-91883298ccf2",
                     "path": "<Keyboard>/#(F)",
                     "interactions": "",
@@ -542,6 +550,7 @@
                 },
                 {
                     "name": "",
+
                     "id": "2179258a-837a-4584-8dad-3ee149978912",
                     "path": "<Keyboard>/#(Z)",
                     "interactions": "",
@@ -553,6 +562,7 @@
                 },
                 {
                     "name": "",
+
                     "id": "59a2c2e7-e876-416d-8153-988cf4f72d79",
                     "path": "<Keyboard>/#(/)",
                     "interactions": "",
