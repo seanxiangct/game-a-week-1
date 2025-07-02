@@ -255,7 +255,5 @@ public class PlayerController : MonoBehaviour
     }
 
     ///------------Animation --------------
-    ///
-
 
 }
