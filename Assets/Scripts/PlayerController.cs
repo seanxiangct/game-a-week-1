@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
     private bool keyPressed = false; 
+    
+    Animator m_Animator;
 
     private void Awake()
     {
@@ -29,7 +32,12 @@ public class PlayerController : MonoBehaviour
     {
         _inputSystem.Dispose();
     }
-    
+
+    private void Start()
+    {
+        m_Animator = gameObject.GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
         keyPressed = false; //reset this bool for this update.
@@ -50,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             testInputText.text = "Use Left Arm";
             keyPressedTrue();
+            m_Animator.SetTrigger("LeftArm");
         }
     }
     /// <summary>
@@ -71,6 +80,7 @@ public class PlayerController : MonoBehaviour
             }
             
             keyPressedTrue();
+            m_Animator.SetTrigger("RightArm");
         }
     }
 
@@ -92,6 +102,7 @@ public class PlayerController : MonoBehaviour
                 testInputText.text ="Use Left Leg";
             }
             keyPressedTrue();
+            m_Animator.SetTrigger("LeftLeg");
         }
     }
     
@@ -113,6 +124,7 @@ public class PlayerController : MonoBehaviour
                 testInputText.text ="Use Right Leg";
             }
             keyPressedTrue();
+            m_Animator.SetTrigger("RightLeg");
         }
     }
     
@@ -133,6 +145,7 @@ public class PlayerController : MonoBehaviour
             }
             
             keyPressedTrue();
+            m_Animator.SetTrigger("Breathe");
         }
     }
 
@@ -140,6 +153,12 @@ public class PlayerController : MonoBehaviour
     {
         keyPressed = true;
     }
-    
+
+    ///------------Animation --------------
+
+    private void ResetAllAnimationTrigger()
+    {
+        m_Animator.ResetTrigger("LeftArm");
+    }
     
 }
