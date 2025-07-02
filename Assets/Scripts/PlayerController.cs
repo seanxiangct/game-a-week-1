@@ -9,14 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
+    [SerializeField] private float armForce = 5f; // Force magnitude for arm strokes
     private bool keyPressed = false;
     private bool isRightArm = false;
     private bool isLeftArm = false;
     private bool isRightLeg = false;
     private bool isLeftLeg = false;
     private bool isBreathe = false;
-
-    
+    private Rigidbody2D rb;
     Animator m_Animator;
 
     private void Awake()
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_Animator = gameObject.GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -70,6 +71,11 @@ public class PlayerController : MonoBehaviour
             keyPressedTrue();
             m_Animator.SetTrigger("LeftArm");
             isLeftArm = true;
+            // Apply force to the top-left
+            if (rb != null)
+            {
+                rb.AddForce(new Vector2(-1, 1).normalized * armForce, ForceMode2D.Impulse);
+            }
         }
 
         if (!_playerActions.LeftArm.IsPressed())
@@ -99,9 +105,13 @@ public class PlayerController : MonoBehaviour
         
         if (_playerActions.RightArm.IsPressed() && !isRightArm)
         {
-            
             m_Animator.SetTrigger("RightArm");
             isRightArm = true;
+            // Apply force to the top-right
+            if (rb != null)
+            {
+                rb.AddForce(new Vector2(1, 1).normalized * armForce, ForceMode2D.Impulse);
+            }
         }
 
         if (!_playerActions.RightArm.IsPressed())
@@ -217,6 +227,6 @@ public class PlayerController : MonoBehaviour
 
     ///------------Animation --------------
 
-    
-    
+
+
 }
