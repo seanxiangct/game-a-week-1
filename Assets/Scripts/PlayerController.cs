@@ -71,10 +71,11 @@ public class PlayerController : MonoBehaviour
             keyPressedTrue();
             m_Animator.SetTrigger("LeftArm");
             isLeftArm = true;
-            // Apply force to the top-left
+            // Apply force to the top-left relative to player rotation
             if (rb != null)
             {
-                rb.AddForce(new Vector2(-1, 1).normalized * armForce, ForceMode2D.Impulse);
+                Vector2 forceDir = (-transform.right + transform.up).normalized;
+                rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
             }
         }
 
@@ -107,10 +108,11 @@ public class PlayerController : MonoBehaviour
         {
             m_Animator.SetTrigger("RightArm");
             isRightArm = true;
-            // Apply force to the top-right
+            // Apply force to the top-right relative to player rotation
             if (rb != null)
             {
-                rb.AddForce(new Vector2(1, 1).normalized * armForce, ForceMode2D.Impulse);
+                Vector2 forceDir = (transform.right + transform.up).normalized;
+                rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
             }
         }
 
