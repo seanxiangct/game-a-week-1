@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
     [SerializeField] private float armForce = 5f; // Force magnitude for arm strokes
+    [SerializeField] private float legForce = 4f; // Force magnitude for leg strokes
     [SerializeField] private float waterDrag = 2f; // Water drag coefficient
     private bool keyPressed = false;
     private bool isRightArm = false;
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (_playerActions.LeftArm.IsPressed())
         {
             testInputText.text = "Use Left Arm";
-        } 
+        }
         if (_playerActions.LeftArm.IsPressed() && !isLeftArm)
         {
             keyPressedTrue();
@@ -85,17 +86,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called by animation event to apply left arm force
-    /// </summary>
-    public void ApplyLeftArmForce()
-    {
-        if (rb != null)
-        {
-            Vector2 forceDir = (-transform.right + transform.up).normalized;
-            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
-        }
-    }
     /// <summary>
     /// Right arm swimming action
     /// </summary>
@@ -115,7 +105,7 @@ public class PlayerController : MonoBehaviour
             }
             keyPressedTrue();
         }
-        
+
         if (_playerActions.RightArm.IsPressed() && !isRightArm)
         {
             m_Animator.SetTrigger("RightArm");
@@ -126,20 +116,8 @@ public class PlayerController : MonoBehaviour
         {
             isRightArm = false;
         }
-        
-        
-    }
 
-    /// <summary>
-    /// Called by animation event to apply right arm force
-    /// </summary>
-    public void ApplyRightArmForce()
-    {
-        if (rb != null)
-        {
-            Vector2 forceDir = (transform.right + transform.up).normalized;
-            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
-        }
+
     }
 
     /// <summary>
@@ -157,14 +135,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                testInputText.text ="Use Left Leg";
+                testInputText.text = "Use Left Leg";
             }
             keyPressedTrue();
         }
 
         if (_playerActions.LeftLeg.IsPressed() && !isLeftLeg)
         {
-           m_Animator.SetTrigger("LeftLeg");
+            m_Animator.SetTrigger("LeftLeg");
             isLeftLeg = true;
         }
 
@@ -173,7 +151,7 @@ public class PlayerController : MonoBehaviour
             isLeftLeg = false;
         }
     }
-    
+
     /// <summary>
     /// Right leg swimming action
     /// </summary>
@@ -190,14 +168,14 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                testInputText.text ="Use Right Leg";
+                testInputText.text = "Use Right Leg";
             }
             keyPressedTrue();
         }
 
         if (_playerActions.RightLeg.IsPressed() && !isRightLeg)
         {
-          
+
             m_Animator.SetTrigger("RightLeg");
             isRightLeg = true;
         }
@@ -207,7 +185,7 @@ public class PlayerController : MonoBehaviour
             isRightLeg = false;
         }
     }
-    
+
     // need to hold to breathe air or drown.
     public void UseBreathe()
     {
@@ -218,7 +196,7 @@ public class PlayerController : MonoBehaviour
             if (keyPressed)
             {
                 newLine = "\n ";
-                testInputText.text +=newLine + "Breathe";
+                testInputText.text += newLine + "Breathe";
             }
             else
             {
@@ -226,10 +204,10 @@ public class PlayerController : MonoBehaviour
             }
             keyPressedTrue();
         }
-        
+
         if (_playerActions.Breathe.IsPressed() && !isBreathe)
         {
-          
+
             m_Animator.SetTrigger("Breathe");
             isBreathe = true;
         }
@@ -251,6 +229,51 @@ public class PlayerController : MonoBehaviour
         {
             // Simple drag: reduce velocity each physics step
             rb.linearVelocity *= Mathf.Clamp01(1f - waterDrag * Time.fixedDeltaTime);
+        }
+    }
+
+
+    ///----------------- Event handlers ---------------
+
+    /// <summary>
+    /// Called by animation event to apply left arm force
+    /// </summary>
+    public void ApplyLeftArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (-transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+        }
+    }
+
+    /// <summary>
+    /// Called by animation event to apply right arm force
+    /// </summary>
+    public void ApplyRightArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+        }
+    }
+
+    public void ApplyLeftLegForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (-transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * legForce, ForceMode2D.Impulse);
+        }
+    }
+
+    public void ApplyRightLegForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * legForce, ForceMode2D.Impulse);
         }
     }
 
