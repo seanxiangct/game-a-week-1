@@ -77,17 +77,23 @@ public class PlayerController : MonoBehaviour
             keyPressedTrue();
             m_Animator.SetTrigger("LeftArm");
             isLeftArm = true;
-            // Apply force to the top-left relative to player rotation
-            if (rb != null)
-            {
-                Vector2 forceDir = (-transform.right + transform.up).normalized;
-                rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
-            }
         }
 
         if (!_playerActions.LeftArm.IsPressed())
         {
             isLeftArm = false;
+        }
+    }
+
+    /// <summary>
+    /// Called by animation event to apply left arm force
+    /// </summary>
+    public void ApplyLeftArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (-transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
         }
     }
     /// <summary>
@@ -114,12 +120,6 @@ public class PlayerController : MonoBehaviour
         {
             m_Animator.SetTrigger("RightArm");
             isRightArm = true;
-            // Apply force to the top-right relative to player rotation
-            if (rb != null)
-            {
-                Vector2 forceDir = (transform.right + transform.up).normalized;
-                rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
-            }
         }
 
         if (!_playerActions.RightArm.IsPressed())
@@ -128,6 +128,18 @@ public class PlayerController : MonoBehaviour
         }
         
         
+    }
+
+    /// <summary>
+    /// Called by animation event to apply right arm force
+    /// </summary>
+    public void ApplyRightArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+        }
     }
 
     /// <summary>
@@ -243,7 +255,7 @@ public class PlayerController : MonoBehaviour
     }
 
     ///------------Animation --------------
-
+    ///
 
 
 }
