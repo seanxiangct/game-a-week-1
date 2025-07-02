@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +7,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI testInputText; // to print out input for testing
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
+    public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
-    private bool keyPressed = false; 
+    private bool keyPressed = false;
+    private bool isRightArm = false;
+    private bool isLeftArm = false;
+    private bool isRightLeg = false;
+    private bool isLeftLeg = false;
+    private bool isBreathe = false;
+
+    
+    Animator m_Animator;
 
     private void Awake()
     {
@@ -29,7 +39,12 @@ public class PlayerController : MonoBehaviour
     {
         _inputSystem.Dispose();
     }
-    
+
+    private void Start()
+    {
+        m_Animator = gameObject.GetComponentInChildren<Animator>();
+    }
+
     void Update()
     {
         keyPressed = false; //reset this bool for this update.
@@ -49,7 +64,17 @@ public class PlayerController : MonoBehaviour
         if (_playerActions.LeftArm.IsPressed())
         {
             testInputText.text = "Use Left Arm";
+        } 
+        if (_playerActions.LeftArm.IsPressed() && !isLeftArm)
+        {
             keyPressedTrue();
+            m_Animator.SetTrigger("LeftArm");
+            isLeftArm = true;
+        }
+
+        if (!_playerActions.LeftArm.IsPressed())
+        {
+            isLeftArm = false;
         }
     }
     /// <summary>
@@ -69,9 +94,22 @@ public class PlayerController : MonoBehaviour
             {
                 testInputText.text = "Use Right Arm";
             }
-            
             keyPressedTrue();
         }
+        
+        if (_playerActions.RightArm.IsPressed() && !isRightArm)
+        {
+            
+            m_Animator.SetTrigger("RightArm");
+            isRightArm = true;
+        }
+
+        if (!_playerActions.RightArm.IsPressed())
+        {
+            isRightArm = false;
+        }
+        
+        
     }
 
     /// <summary>
@@ -93,6 +131,17 @@ public class PlayerController : MonoBehaviour
             }
             keyPressedTrue();
         }
+
+        if (_playerActions.LeftLeg.IsPressed() && !isLeftLeg)
+        {
+           m_Animator.SetTrigger("LeftLeg");
+            isLeftLeg = true;
+        }
+
+        if (!_playerActions.LeftLeg.IsPressed())
+        {
+            isLeftLeg = false;
+        }
     }
     
     /// <summary>
@@ -100,6 +149,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void UseRightLeg()
     {
+        //debug
         if (_playerActions.RightLeg.IsPressed())
         {
             string newLine = "";
@@ -114,11 +164,24 @@ public class PlayerController : MonoBehaviour
             }
             keyPressedTrue();
         }
+
+        if (_playerActions.RightLeg.IsPressed() && !isRightLeg)
+        {
+          
+            m_Animator.SetTrigger("RightLeg");
+            isRightLeg = true;
+        }
+
+        if (!_playerActions.RightLeg.IsPressed())
+        {
+            isRightLeg = false;
+        }
     }
     
     // need to hold to breathe air or drown.
     public void UseBreathe()
     {
+        //debug only
         if (_playerActions.Breathe.IsPressed())
         {
             string newLine = "";
@@ -131,8 +194,19 @@ public class PlayerController : MonoBehaviour
             {
                 testInputText.text = "Breathe";
             }
-            
             keyPressedTrue();
+        }
+        
+        if (_playerActions.Breathe.IsPressed() && !isBreathe)
+        {
+          
+            m_Animator.SetTrigger("Breathe");
+            isBreathe = true;
+        }
+
+        if (!_playerActions.Breathe.IsPressed())
+        {
+            isBreathe = false;
         }
     }
 
@@ -140,6 +214,9 @@ public class PlayerController : MonoBehaviour
     {
         keyPressed = true;
     }
+
+    ///------------Animation --------------
+
     
     
 }
