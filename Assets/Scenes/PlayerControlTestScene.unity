@@ -1209,11 +1209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a35ad6f0db541341951b2cdb957f0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftArm: {fileID: 0}
-  _rightArm: {fileID: 0}
-  _leftLeg: {fileID: 0}
-  _rightLeg: {fileID: 0}
-  _breath: {fileID: 0}
+  _playerController: {fileID: 1253230058}
+  _leftArm: {fileID: 954551254}
+  _rightArm: {fileID: 1024140745}
+  _leftLeg: {fileID: 1611615355}
+  _rightLeg: {fileID: 1072935816}
+  _breath: {fileID: 438874319}
   _leftArmKey: F
   _RightArmKey: J
   _leftLegKey: Z
