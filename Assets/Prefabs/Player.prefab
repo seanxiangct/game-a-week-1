@@ -1650,7 +1650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testInputText: {fileID: 0}
-  armForce: 1
+  armForce: 3.5
+  waterDrag: 3
 --- !u!50 &4715172607870374789
 Rigidbody2D:
   serializedVersion: 5

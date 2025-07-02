@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
     [SerializeField] private float armForce = 5f; // Force magnitude for arm strokes
+    [SerializeField] private float waterDrag = 2f; // Water drag coefficient
     private bool keyPressed = false;
     private bool isRightArm = false;
     private bool isLeftArm = false;
@@ -44,6 +45,11 @@ public class PlayerController : MonoBehaviour
     {
         m_Animator = gameObject.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyWaterDrag();
     }
 
     void Update()
@@ -225,6 +231,15 @@ public class PlayerController : MonoBehaviour
     private void keyPressedTrue()
     {
         keyPressed = true;
+    }
+
+    private void ApplyWaterDrag()
+    {
+        if (rb != null)
+        {
+            // Simple drag: reduce velocity each physics step
+            rb.linearVelocity *= Mathf.Clamp01(1f - waterDrag * Time.fixedDeltaTime);
+        }
     }
 
     ///------------Animation --------------
