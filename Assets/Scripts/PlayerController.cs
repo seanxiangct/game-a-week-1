@@ -121,18 +121,6 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by animation event to apply right arm force
-    /// </summary>
-    public void ApplyRightArmForce()
-    {
-        if (rb != null)
-        {
-            Vector2 forceDir = (transform.right + transform.up).normalized;
-            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
-        }
-    }
-
-    /// <summary>
     /// Left leg swimming action
     /// </summary>
     public void UseLeftLeg()
