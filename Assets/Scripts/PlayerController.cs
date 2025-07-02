@@ -9,14 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
+    [SerializeField] private float armForce = 5f; // Force magnitude for arm strokes
+    [SerializeField] private float waterDrag = 2f; // Water drag coefficient
     private bool keyPressed = false;
     private bool isRightArm = false;
     private bool isLeftArm = false;
     private bool isRightLeg = false;
     private bool isLeftLeg = false;
     private bool isBreathe = false;
-
-    
+    private Rigidbody2D rb;
     Animator m_Animator;
 
     private void Awake()
@@ -43,6 +44,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         m_Animator = gameObject.GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyWaterDrag();
     }
 
     void Update()
@@ -77,6 +84,18 @@ public class PlayerController : MonoBehaviour
             isLeftArm = false;
         }
     }
+
+    /// <summary>
+    /// Called by animation event to apply left arm force
+    /// </summary>
+    public void ApplyLeftArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (-transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+        }
+    }
     /// <summary>
     /// Right arm swimming action
     /// </summary>
@@ -99,7 +118,6 @@ public class PlayerController : MonoBehaviour
         
         if (_playerActions.RightArm.IsPressed() && !isRightArm)
         {
-            
             m_Animator.SetTrigger("RightArm");
             isRightArm = true;
         }
@@ -110,6 +128,18 @@ public class PlayerController : MonoBehaviour
         }
         
         
+    }
+
+    /// <summary>
+    /// Called by animation event to apply right arm force
+    /// </summary>
+    public void ApplyRightArmForce()
+    {
+        if (rb != null)
+        {
+            Vector2 forceDir = (transform.right + transform.up).normalized;
+            rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+        }
     }
 
     /// <summary>
@@ -215,8 +245,15 @@ public class PlayerController : MonoBehaviour
         keyPressed = true;
     }
 
+    private void ApplyWaterDrag()
+    {
+        if (rb != null)
+        {
+            // Simple drag: reduce velocity each physics step
+            rb.linearVelocity *= Mathf.Clamp01(1f - waterDrag * Time.fixedDeltaTime);
+        }
+    }
+
     ///------------Animation --------------
 
-    
-    
 }
