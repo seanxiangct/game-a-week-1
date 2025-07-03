@@ -3078,11 +3078,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 1673890846}
-  _leftArm: {fileID: 0}
-  _rightArm: {fileID: 0}
-  _leftLeg: {fileID: 0}
-  _rightLeg: {fileID: 0}
-  _breath: {fileID: 0}
+  _leftArm: {fileID: 1083231432}
+  _rightArm: {fileID: 864131132}
+  _leftLeg: {fileID: 344818727}
+  _rightLeg: {fileID: 1246644822}
+  _breath: {fileID: 1768116286}
   _leftArmKey: F
   _RightArmKey: J
   _leftLegKey: Z
