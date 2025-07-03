@@ -1589,6 +1589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714902846672908271}
+  - component: {fileID: 1160755162528436587}
   - component: {fileID: 1192268575538167697}
   - component: {fileID: 4715172607870374789}
   - component: {fileID: 7673329087151990158}
@@ -1615,6 +1616,18 @@ Transform:
   - {fileID: 2817306398699867661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160755162528436587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925418604050177669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c400b57e59fd24a8d92223714152f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1192268575538167697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1641,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testInputText: {fileID: 0}
+  staminaUI: {fileID: 0}
+  staminaModified: {fileID: 0}
+  breathModifyStamina: {fileID: 0}
+  stamArmL: {fileID: 0}
+  stamArmR: {fileID: 0}
+  stamLegL: {fileID: 0}
+  stamLegR: {fileID: 0}
+  stamBreath: {fileID: 0}
   armForce: 3.5
+  legForce: 4
   waterDrag: 3
 --- !u!50 &4715172607870374789
 Rigidbody2D:
