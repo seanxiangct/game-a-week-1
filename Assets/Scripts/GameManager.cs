@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Player.GameStarted = true;
     }
 
     private void Update()

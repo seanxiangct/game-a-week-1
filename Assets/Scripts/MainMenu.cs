@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour {
 
         Debug.Log("Sound and Music tests");
         AudioAssets.PlaySound("switch-1", 0.5f, 1f, 0.1f, true);
+        Player.GameStarted = false;
         MusicAssets.PlayTitle();
 
     }
