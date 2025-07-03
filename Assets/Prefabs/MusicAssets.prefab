@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleMusic: {fileID: 8300000, guid: 056d4fe4790f35c48b8a6da9b4275203, type: 3}
-  swimmingMusic: {fileID: 8300000, guid: 056d4fe4790f35c48b8a6da9b4275203, type: 3}
-  gameMusic: {fileID: 8300000, guid: 056d4fe4790f35c48b8a6da9b4275203, type: 3}
+  swimmingMusic: {fileID: 8300000, guid: 7d80f1e749a8bf2468abc2c87bedc2b8, type: 3}
+  drowningMusic: {fileID: 8300000, guid: 0ecdaf97f2c7d8840ad7b993d9275074, type: 3}
   audioSource: {fileID: 642950427004669621}
 --- !u!82 &642950427004669621
 AudioSource:
