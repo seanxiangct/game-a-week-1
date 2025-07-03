@@ -4,8 +4,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
    [SerializeField] private static float _stamina;
+    public static float sameLimbUseMaxPenatly = 2; // Max penalty for using the same limb too much
 
-   public static float Stamina
+    public static float Stamina
    {
       get => _stamina;
       set => _stamina = value;

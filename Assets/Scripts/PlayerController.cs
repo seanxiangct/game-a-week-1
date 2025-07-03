@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI testInputText; // to print out input for testing
+    [SerializeField] public TextMeshProUGUI staminaTestText; // shows stamina for testing
+    [SerializeField] public TextMeshProUGUI stamArmL, stamArmR, stamLegL, stamLegR, stamBreath; // stamina for each limb
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     public InputSystem_Actions InputSystem => _inputSystem;
     [SerializeField] private InputSystem_Actions.PlayerActions _playerActions; // the player's keybinding
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isBreathe = false;
     private Rigidbody2D rb;
     Animator m_Animator;
+
+    private StaminaManager _staminaManager;
 
     private void Awake()
     {
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         m_Animator = gameObject.GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        _staminaManager = new(this);
     }
 
     private void FixedUpdate()
@@ -69,21 +74,24 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void UseLeftArm()
     {
-        if (_playerActions.LeftArm.IsPressed())
+        if (_playerActions.LeftArm.WasPressedThisFrame())
+
         {
             testInputText.text = "Use Left Arm";
         }
-        if (_playerActions.LeftArm.IsPressed() && !isLeftArm)
+        if (_playerActions.LeftArm.WasPressedThisFrame() && !isLeftArm)
         {
             keyPressedTrue();
+            _staminaManager.UseArms(false); // Use left arm stamina
             m_Animator.SetTrigger("LeftArm");
             isLeftArm = true;
         }
 
-        if (!_playerActions.LeftArm.IsPressed())
+        if (!_playerActions.LeftArm.WasPressedThisFrame())
         {
             isLeftArm = false;
         }
+
     }
 
     /// <summary>
@@ -91,7 +99,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void UseRightArm()
     {
-        if (_playerActions.RightArm.IsPressed())
+        if (_playerActions.RightArm.WasPressedThisFrame())
         {
             string newLine = "";
             if (keyPressed)
@@ -104,18 +112,20 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Right Arm";
             }
             keyPressedTrue();
+            _staminaManager.UseArms(true); // Use right arm stamina
         }
 
-        if (_playerActions.RightArm.IsPressed() && !isRightArm)
+        if (_playerActions.RightArm.WasPressedThisFrame() && !isRightArm)
         {
             m_Animator.SetTrigger("RightArm");
             isRightArm = true;
         }
 
-        if (!_playerActions.RightArm.IsPressed())
+        if (!_playerActions.RightArm.WasPressedThisFrame())
         {
             isRightArm = false;
         }
+
 
 
     }
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void UseLeftLeg()
     {
-        if (_playerActions.LeftLeg.IsPressed())
+        if (_playerActions.LeftLeg.WasPressedThisFrame())
         {
             string newLine = "";
             if (keyPressed)
@@ -138,18 +148,20 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Left Leg";
             }
             keyPressedTrue();
+            _staminaManager.UseLegs(false); // Use left leg stamina
         }
 
-        if (_playerActions.LeftLeg.IsPressed() && !isLeftLeg)
+        if (_playerActions.LeftLeg.WasPressedThisFrame() && !isLeftLeg)
         {
             m_Animator.SetTrigger("LeftLeg");
             isLeftLeg = true;
         }
 
-        if (!_playerActions.LeftLeg.IsPressed())
+        if (!_playerActions.LeftLeg.WasPressedThisFrame())
         {
             isLeftLeg = false;
         }
+
     }
 
     /// <summary>
@@ -158,7 +170,7 @@ public class PlayerController : MonoBehaviour
     public void UseRightLeg()
     {
         //debug
-        if (_playerActions.RightLeg.IsPressed())
+        if (_playerActions.RightLeg.WasPressedThisFrame())
         {
             string newLine = "";
             if (keyPressed)
@@ -171,26 +183,28 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Right Leg";
             }
             keyPressedTrue();
+            _staminaManager.UseLegs(true); // Use right leg stamina
         }
 
-        if (_playerActions.RightLeg.IsPressed() && !isRightLeg)
+        if (_playerActions.RightLeg.WasPressedThisFrame() && !isRightLeg)
         {
 
             m_Animator.SetTrigger("RightLeg");
             isRightLeg = true;
         }
 
-        if (!_playerActions.RightLeg.IsPressed())
+        if (!_playerActions.RightLeg.WasPressedThisFrame())
         {
             isRightLeg = false;
         }
+
     }
 
     // need to hold to breathe air or drown.
     public void UseBreathe()
     {
         //debug only
-        if (_playerActions.Breathe.IsPressed())
+        if (_playerActions.Breathe.WasPressedThisFrame())
         {
             string newLine = "";
             if (keyPressed)
@@ -205,14 +219,14 @@ public class PlayerController : MonoBehaviour
             keyPressedTrue();
         }
 
-        if (_playerActions.Breathe.IsPressed() && !isBreathe)
+        if (_playerActions.Breathe.WasPressedThisFrame() && !isBreathe)
         {
 
             m_Animator.SetTrigger("Breathe");
             isBreathe = true;
         }
 
-        if (!_playerActions.Breathe.IsPressed())
+        if (!_playerActions.Breathe.WasPressedThisFrame())
         {
             isBreathe = false;
         }
