@@ -41,7 +41,8 @@ public class Player : MonoBehaviour
    private void Update()
    {
       //Player dies when they are too tired or drown
-      if (_stamina<=0 && _oxygenLevel<=0)
+      //if (_stamina<=0 && _oxygenLevel<=0)
+      if (_stamina<=0)
       {
          Die();
       }
@@ -49,7 +50,8 @@ public class Player : MonoBehaviour
 
    private static void Die()
    {
-      GameManager.EndGame();
+        GameOver = true;
+        GameManager.EndGame();
    }
 
    private void Reset()
