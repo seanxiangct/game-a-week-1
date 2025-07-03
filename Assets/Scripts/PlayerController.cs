@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI testInputText; // to print out input for testing
-    [SerializeField] public TextMeshProUGUI staminaTestText; // shows stamina for testing
+    [SerializeField] public TextMeshProUGUI staminaUI; // shows stamina
+    [SerializeField] public TextMeshProUGUI staminaModified; // shows modified stamina
+    [SerializeField] public TextMeshProUGUI breathModifyStamina; // shows stamina modified by breath
     [SerializeField] public TextMeshProUGUI stamArmL, stamArmR, stamLegL, stamLegR, stamBreath; // stamina for each limb
     [SerializeField] private InputSystem_Actions _inputSystem; // the keybindings for the game
     public InputSystem_Actions InputSystem => _inputSystem;
@@ -67,6 +69,8 @@ public class PlayerController : MonoBehaviour
         UseLeftLeg();
         UseRightLeg();
         UseBreathe();
+        _staminaManager.BreathingUpdate();
+        _staminaManager.NeedToUseAllLimbsUpdate();
     }
 
     /// <summary>
@@ -217,6 +221,7 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Breathe";
             }
             keyPressedTrue();
+            _staminaManager.UseBreath(); // Use breath
         }
 
         if (_playerActions.Breathe.WasPressedThisFrame() && !isBreathe)
@@ -292,5 +297,6 @@ public class PlayerController : MonoBehaviour
     }
 
     ///------------Animation --------------
+
 
 }

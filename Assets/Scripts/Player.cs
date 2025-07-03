@@ -4,7 +4,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
    [SerializeField] private static float _stamina;
-    public static float sameLimbUseMaxPenatly = 2; // Max penalty for using the same limb too much
+    public static float sameLimbUseMaxPenatly = 4; // Max penalty for using the same limb too much
+    public static float breathTooFastTime = 3; // Time in seconds for breathing too fast
+    public static float breathTooFastPenalty = 3; // Penalty for breathing too fast
+    public static float needToBreathTime = 5; // Time in seconds before the player needs to breathe
+    public static float breathStaminaGain = 4; // Stamina gained from breathing
 
     public static float Stamina
    {

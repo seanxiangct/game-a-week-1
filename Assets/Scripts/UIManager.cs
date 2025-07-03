@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         resetTextColourToDefault();
         if (_playerController.InputSystem.Player.LeftArm.IsPressed())
         {
-            Debug.Log("hello leftarm is pressed");
+            //Debug.Log("hello leftarm is pressed");
             _leftArm.color = pressedTextColour;
         }
         if (_playerController.InputSystem.Player.RightArm.IsPressed())
