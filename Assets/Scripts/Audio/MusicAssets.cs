@@ -5,7 +5,7 @@ public class MusicAssets : MonoBehaviour {
     public static MusicAssets instance;
     public AudioClip titleMusic;
     public AudioClip swimmingMusic;
-    public AudioClip gameMusic;
+    public AudioClip drowningMusic;
 
     [SerializeField] private AudioSource audioSource;
 
@@ -32,8 +32,8 @@ public class MusicAssets : MonoBehaviour {
         instance.PlayMusic();
     }
 
-    public static void PlayShark() {
-        instance.audioSource.clip = instance.gameMusic;
+    public static void PlayDrown() {
+        instance.audioSource.clip = instance.drowningMusic;
         instance.PlayMusic();
     }
 
@@ -45,4 +45,32 @@ public class MusicAssets : MonoBehaviour {
     public void StopMusic() {
         audioSource.Stop();
     }
+
+    private void Update() {
+        if (!Player.GameStarted) return;
+
+        if (!Player.GameOver) {
+            if (Player.Stamina > 50) {
+                if (instance.audioSource.clip == instance.swimmingMusic) return; // Already playing swimming music
+                Debug.Log("Playing swimming music");
+                PlaySwim();
+            } else {
+                if (instance.audioSource.clip == instance.drowningMusic) return; // Already playing drowning music
+                Debug.Log("Playing drowning music");
+                PlayDrown();
+            }
+
+        } else {
+
+        }
+    }
+
 }
+
+
+
+
+
+
+
+

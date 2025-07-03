@@ -88,7 +88,6 @@ public class StaminaManager {
 
         bool textUsed = false;
 
-        Debug.Log(_usedLegsTimer);
         if (_usedLegsTimer < _movingLegsTooFastThreshold && _usedLegsTimer > 0) {
             LoseStamina(1);
             LimbsStaminaModified(1, "Using Legs too fast!");

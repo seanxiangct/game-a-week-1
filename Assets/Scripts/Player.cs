@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   [SerializeField] private static float _stamina;
+    public static bool GameStarted = false; // Indicates if the game has started
+    public static bool GameOver = false; // Indicates if the game is over
+
+    [SerializeField] private static float _stamina;
     public static float sameLimbUseMaxPenatly = 4; // Max penalty for using the same limb too much
     public static float breathTooFastTime = 3; // Time in seconds for breathing too fast
     public static float breathTooFastPenalty = 3; // Penalty for breathing too fast
@@ -31,7 +34,8 @@ public class Player : MonoBehaviour
 
    private void Start()
    {
-      Reset();
+        GameStarted = true; // Set the game as started
+        Reset();
    }
 
    private void Update()
