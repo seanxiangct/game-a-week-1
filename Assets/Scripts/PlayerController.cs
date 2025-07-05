@@ -86,7 +86,6 @@ public class PlayerController : MonoBehaviour
         if (_playerActions.LeftArm.WasPressedThisFrame() && !isLeftArm)
         {
             keyPressedTrue();
-            _staminaManager.UseArms(false); // Use left arm stamina
             m_Animator.SetTrigger("LeftArm");
             isLeftArm = true;
         }
@@ -116,7 +115,6 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Right Arm";
             }
             keyPressedTrue();
-            _staminaManager.UseArms(true); // Use right arm stamina
         }
 
         if (_playerActions.RightArm.WasPressedThisFrame() && !isRightArm)
@@ -152,7 +150,6 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Left Leg";
             }
             keyPressedTrue();
-            _staminaManager.UseLegs(false); // Use left leg stamina
         }
 
         if (_playerActions.LeftLeg.WasPressedThisFrame() && !isLeftLeg)
@@ -187,7 +184,6 @@ public class PlayerController : MonoBehaviour
                 testInputText.text = "Use Right Leg";
             }
             keyPressedTrue();
-            _staminaManager.UseLegs(true); // Use right leg stamina
         }
 
         if (_playerActions.RightLeg.WasPressedThisFrame() && !isRightLeg)
@@ -263,6 +259,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 forceDir = (-transform.right + transform.up).normalized;
             rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+            _staminaManager.UseArms(false); // Use left arm stamina
         }
     }
 
@@ -275,6 +272,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 forceDir = (transform.right + transform.up).normalized;
             rb.AddForce(forceDir * armForce, ForceMode2D.Impulse);
+            _staminaManager.UseArms(true); // Use right arm stamina
         }
     }
 
@@ -284,6 +282,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 forceDir = (-transform.right + transform.up).normalized;
             rb.AddForce(forceDir * legForce, ForceMode2D.Impulse);
+            _staminaManager.UseLegs(false); // Use left leg stamina
         }
     }
 
@@ -293,6 +292,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 forceDir = (transform.right + transform.up).normalized;
             rb.AddForce(forceDir * legForce, ForceMode2D.Impulse);
+            _staminaManager.UseLegs(true); // Use right leg stamina
         }
     }
 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Coolduck_0: -7187098126513408265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
