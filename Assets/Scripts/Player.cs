@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
    public static float breathTooFastTime = 3; // Time in seconds for breathing too fast
    public static float breathTooFastPenalty = 3; // Penalty for breathing too fast
    public static float needToBreathTime = 5; // Time in seconds before the player needs to breathe
-   public static float breathStaminaGain = 4; // Stamina gained from breathing
+   public static float breathStaminaGain = 5; // Stamina gained from breathing
 
    public static Action OnDeath; // Action to call when the player dies
 
@@ -57,7 +57,6 @@ public class Player : MonoBehaviour
 
    private void Update()
    {
-      Debug.Log($"Player Update: Stamina={_stamina}, Oxygen={_oxygenLevel}");
       //Player dies when they are too tired or drown
       //if (_stamina<=0 && _oxygenLevel<=0)
       if (_stamina <= 0)
@@ -70,7 +69,7 @@ public class Player : MonoBehaviour
    private static void Die(Death deathType)
    {
       Debug.Log($"Player Die: DeathType={deathType}");
-      GameOver = true;
+      // GameOver = true;
       // GameManager.EndGame();
 
       OnDeath?.Invoke(); // Invoke the death action

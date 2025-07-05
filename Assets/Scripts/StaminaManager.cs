@@ -111,6 +111,7 @@ public class StaminaManager {
             if (!textUsed) LimbsStaminaModified(0, "", true);
         }
 
+        LoseStamina(1);
         StaminaLimbUseText();
         _usedLegsTimer = 0f;
         _usedLegsRecently = true;
@@ -144,6 +145,7 @@ public class StaminaManager {
             if (!textUsed) LimbsStaminaModified(0, "", true);
         }
         StaminaLimbUseText();
+        LoseStamina(2);
         _usedArmsTimer = 0f;
         _usedArmsRecently = true;
 
